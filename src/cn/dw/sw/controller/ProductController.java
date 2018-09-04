@@ -19,14 +19,14 @@ import cn.dw.sw.service.ProductService;
  * 
  */
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/product") //请求路径
 public class ProductController {
 	
 	
 	@Autowired  //告诉spirng容器这里的bean需要自动注入
 	private ProductService productService;
 	
-	@RequestMapping("/page")
+	@RequestMapping("/page") //请求路径,如果返回视图不需要加@ResponseBody注解
 	public String page(Product product) {
 		return "/product/list";
 	}

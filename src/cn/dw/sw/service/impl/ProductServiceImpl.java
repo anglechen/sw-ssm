@@ -21,7 +21,7 @@ import cn.dw.sw.service.ProductService;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	@Autowired
+	@Autowired //自动注入ProductDao的bean对象
 	private ProductDao productDao;
 	
 	@Override
