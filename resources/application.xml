@@ -19,6 +19,61 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	<!-- spring 整合mybatis配合 -->
+	
+	<!-- mybatis依赖数据源，所以先配置数据源 -->
+	<bean id="springDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/sw-ssm?characterEncoding=utf8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	
+	
+	<!-- 配置mybatis的核心工厂SqlSessionFactory 
+		mapperLocations 配置接口的所有xml配置文件的路径
+	-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="springDataSource"></property>
+		<property name="mapperLocations" value="classpath:cn/dw/sw/mapper/impl/*.xml"></property>
+	</bean>
+	
+	
+	<!-- 配置mybatis对应接口跟SqlSessionFactory 
+		spirng整合mybatis
+	-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<property name="basePackage" value="cn.dw.sw.mapper"></property>
+	</bean>
+	
+	
+	
+	<!-- 开启mvc的注解驱动， 识别@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")注解-->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+		<!-- 注册字符串转换器，把编码设置为utf-8  防止返回数据乱码-->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=utf-8</value>
+						<value>text/html;charset=utf-8</value>
+						<value>application/x-www-form-urlencoded</value>
+					</list>
+				</property>
+			</bean>
+			<!-- 自动把controller中的返回对象序列化成json格式
+				依赖：3个包：jackson开头的包
+			 -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
+	
+	
+	
+	
 	
 	
 	

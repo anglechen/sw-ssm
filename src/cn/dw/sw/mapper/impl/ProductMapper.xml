@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dw.sw.mapper.ProductMapper">
+
+	<insert id="add" parameterType="cn.dw.sw.model.Product">
+		<!-- insert into product(name,type) values(?,?) -->
+		insert into product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name !=''">
+				name,
+			</if>
+			<if test="type != null and type !=''">
+				type,
+			</if>
+			<if test="seria != null and seria !=''">
+				seria,
+			</if>
+			<if test="produceDate != null">
+				produce_date,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="prices != null">
+				prices,
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				user_people,
+			</if>
+		</trim>
+	
+		values
+		
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name !=''">
+				#{name},
+			</if>
+			<if test="type != null and type !=''">
+				#{type},
+			</if>
+			<if test="seria != null and seria !=''">
+				#{seria},
+			</if>
+			<if test="produceDate != null">
+				#{produceDate},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			<if test="prices != null">
+				#{prices},
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				#{userPeople},
+			</if>
+		</trim>
+	</insert>
+	
+	
+	<update id="update" parameterType="cn.dw.sw.model.Product">
+		<!-- update product set name = ?,type = ? where id =? -->
+		update product 
+		<set>
+			<if test="name != null and name !=''">
+				name = #{name},
+			</if>
+			<if test="type != null and type !=''">
+				type = #{type},
+			</if>
+			<if test="seria != null and seria !=''">
+				seria = #{seria},
+			</if>
+			<if test="produceDate != null">
+				produce_date = #{produceDate},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="prices != null">
+				prices = #{prices},
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				user_people = #{userPeople},
+			</if>
+		</set>
+		where  id = #{id}
+	</update>
+	
+	
+	<!-- parameterType="int" -->
+	<delete id="delete" parameterType="cn.dw.sw.model.Product">
+		
+		delete from product where id = #{id}
+	
+	</delete>
+	
+	
+	
+	<select id="query" parameterType="cn.dw.sw.model.Product" resultType="cn.dw.sw.model.Product">
+		<!-- select * from product where name = ? -->
+		
+		select * from product 
+		<where>
+			<if test="name != null and name !=''">
+				and name = #{name}
+			</if>
+			<if test="type != null and type !=''">
+				and type = #{type}
+			</if>
+			<if test="seria != null and seria !=''">
+				and seria = #{seria}
+			</if>
+			<if test="produceDate != null">
+				and produce_date = #{produceDate}
+			</if>
+			<if test="status != null">
+				and status = #{status}
+			</if>
+			<if test="prices != null">
+				and prices = #{prices}
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				and user_people = #{userPeople}
+			</if>
+		</where>
+	
+	</select>
+	<select id="query2" parameterType="cn.dw.sw.model.Product" resultType="cn.dw.sw.model.dto.ProductDto">
+		<!-- select * from product where name = ? -->
+		
+		select p.*,t.name as statusName from product p ,status t
+		<where>
+			 p.status = t.type
+		
+			<if test="name != null and name !=''">
+				and p.name = #{name}
+			</if>
+			<if test="type != null and type !=''">
+				and p.type = #{type}
+			</if>
+			<if test="seria != null and seria !=''">
+				and p.seria = #{seria}
+			</if>
+			<if test="produceDate != null">
+				and p.produce_date = #{produceDate}
+			</if>
+			<if test="status != null">
+				and p.status = #{status}
+			</if>
+			<if test="prices != null">
+				and p.prices = #{prices}
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				and p.user_people = #{userPeople}
+			</if>
+		</where>
+	
+	</select>
+	
+	
+	
+
+</mapper>

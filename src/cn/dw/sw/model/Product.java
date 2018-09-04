@@ -5,6 +5,8 @@ package cn.dw.sw.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author aubrey
  * @date  上午10:01:05
@@ -20,6 +22,8 @@ public class Product {
 	
 	private String seria;
 	
+	/*日期格式转换必须加上此注解*/
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date produceDate;
 	
 	private Integer status;

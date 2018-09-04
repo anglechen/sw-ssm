@@ -1,7 +1,7 @@
 /**
  *
  */
-package cn.dw.sw.service;
+package cn.dw.sw.mapper;
 
 import java.util.List;
 
@@ -10,12 +10,12 @@ import cn.dw.sw.model.dto.ProductDto;
 
 /**
  * @author aubrey
- * @date  上午11:19:09
- * 
+ * @date  下午4:09:10
+ * mybatis接口
  */
-public interface ProductService {
+public interface ProductMapper {
 	
-	public void add(Product product);
+	public  void add(Product product);
 	
 	public void update(Product product);
 	
@@ -23,16 +23,8 @@ public interface ProductService {
 	
 	public List<Product> query(Product product);
 	
+	
 	public List<ProductDto> query2(Product product);
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
