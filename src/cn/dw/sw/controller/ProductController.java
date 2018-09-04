@@ -28,7 +28,7 @@ public class ProductController {
 	
 	@RequestMapping("/page")
 	public String page(Product product) {
-		return "list";
+		return "/product/list";
 	}
 	
 	
