@@ -5,6 +5,9 @@ package cn.dw.sw.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import cn.dw.sw.dao.ProductDao;
 import cn.dw.sw.dao.impl.ProductDaoImpl;
 import cn.dw.sw.model.Product;
@@ -15,9 +18,11 @@ import cn.dw.sw.service.ProductService;
  * @date  上午11:22:29
  * 
  */
+@Service
 public class ProductServiceImpl implements ProductService {
 
-	private ProductDao productDao = new ProductDaoImpl();
+	@Autowired
+	private ProductDao productDao;
 	
 	@Override
 	public void add(Product product) {

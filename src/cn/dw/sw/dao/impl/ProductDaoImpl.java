@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.stereotype.Repository;
 
 import cn.dw.sw.dao.ProductDao;
 import cn.dw.sw.model.Product;
@@ -25,6 +26,8 @@ import cn.dw.sw.model.Product;
  * @date  上午10:16:27
  * 
  */
+/*默认bean的名称是类名首字母小写*/
+@Repository
 public class ProductDaoImpl implements ProductDao {
 
 	static {
