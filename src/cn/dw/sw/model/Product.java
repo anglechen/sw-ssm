@@ -91,6 +91,12 @@ public class Product {
 	public void setUserPeople(String userPeople) {
 		this.userPeople = userPeople;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", type=" + type + ", seria=" + seria + ", produceDate="
+				+ produceDate + ", status=" + status + ", prices=" + prices + ", userPeople=" + userPeople + "]";
+	}
 	
 	
 	
