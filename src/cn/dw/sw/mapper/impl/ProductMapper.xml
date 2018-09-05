@@ -154,6 +154,7 @@
 				and p.user_people = #{userPeople}
 			</if>
 		</where>
+		<!-- 分页动态配置 -->
 		<if test="startPage !=null and rowCount !=null">
 			limit #{startPage} , #{rowCount}
 		</if>
