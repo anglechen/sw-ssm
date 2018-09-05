@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	table { 
+		border : 1px solid;    
+		margin-left: 56px;
+	    margin-top: 10px;
+	    margin-bottom: 50px;
+	    text-align: center;
+	}
+	table tr { border : 1px solid;}
+	table td{ border : 1px solid; width:100px;}
+	#search{margin-left:56px;}
+	form{margin-left:50px;}
+	button{margin-left:10px;}
+</style>
+<script type="text/javascript" src="/sw-ssm/static/jquery-1.10.2.min.js"></script>
+<!-- 日期插件 -->
+<script type="text/javascript" src="/sw-ssm/static/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+	
+	<form action="/sw-ssm/product/add">
+		<div>资产名称：<input name="name"></div>
+		<div>资产类型：<input name="type"></div>
+		<div>出厂日期：<input  id="produceDate" name="productDate"></div>
+		<div>资产状态：<input name="status"></div>
+		<div>资产价格：<input name="prices"></div>
+		<div><button type="submit" >表单提交</button><button type="button" id= "save">ajax提交</button></div>
+	</form>
+	
+	
+	<script type="text/javascript">
+	
+		$("#productDate").on("click",function(){
+			WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});
+		});
+		
+		$("#save").on("click",function(){
+			$.ajax({
+				url:"/sw-ssm/product/add",
+				data:{
+					name:$("input[name='name']").val(),
+					type:$("input[name='type']").val(),
+					productDate:$("input[name='produceDate']").val(),
+					status:$("input[name='status']").val(),
+					prices:$("input[name='prices']").val()
+				},
+				success:function(data){
+					alert("保存成功！");
+				}
+			})
+		})
+	
+	
+	</script>
+</body>
+</html>

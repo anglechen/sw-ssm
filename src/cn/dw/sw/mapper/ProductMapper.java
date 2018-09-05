@@ -28,6 +28,8 @@ public interface ProductMapper {
 	
 	public List<ProductDto> query3(ProductDto product);
 	
+	public int query4(ProductDto product);
+	
 	
 
 }

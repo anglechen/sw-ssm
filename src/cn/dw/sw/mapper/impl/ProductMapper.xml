@@ -177,6 +177,9 @@
 		<where>
 			 p.status = t.type
 		
+			<if test="id != null ">
+				and p.id = #{id}
+			</if>
 			<if test="name != null and name !=''">
 				and p.name = #{name}
 			</if>
@@ -203,6 +206,40 @@
 		<if test="startPage !=null and rowCount !=null">
 			limit #{startPage} , #{rowCount}
 		</if>
+		
+	</select>
+	<select id="query4" parameterType="cn.dw.sw.model.dto.ProductDto" resultType="int">
+		<!-- select * from product where name = ? -->
+		
+		select count(1) from product p ,status t
+		<where>
+			 p.status = t.type
+		
+			<if test="id != null ">
+				and p.id = #{id}
+			</if>
+			<if test="name != null and name !=''">
+				and p.name = #{name}
+			</if>
+			<if test="type != null and type !=''">
+				and p.type = #{type}
+			</if>
+			<if test="seria != null and seria !=''">
+				and p.seria = #{seria}
+			</if>
+			<if test="produceDate != null">
+				and p.produce_date = #{produceDate}
+			</if>
+			<if test="status != null">
+				and p.status = #{status}
+			</if>
+			<if test="prices != null">
+				and p.prices = #{prices}
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				and p.user_people = #{userPeople}
+			</if>
+		</where>
 		
 	</select>
 	

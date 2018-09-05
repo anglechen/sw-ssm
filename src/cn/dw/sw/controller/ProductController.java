@@ -49,14 +49,18 @@ public class ProductController {
 	@ResponseBody   //告诉spirnmvc 返回的是数据，不是视图
 	public String update(Product product) {
 		productService.update(product);
-		return "success";
+		JSONObject json = new JSONObject();
+		json.put("result", "success");
+		return json.toJSONString();
 	}
 	
 	@RequestMapping("/delete")
 	@ResponseBody   //告诉spirnmvc 返回的是数据，不是视图
 	public String delete(Product product) {
 		productService.delete(product);
-		return "success";
+		JSONObject json = new JSONObject();
+		json.put("result", "success");
+		return json.toJSONString();
 	}
 	
 	
@@ -83,6 +87,15 @@ public class ProductController {
 		return results;
 	}
 	
+	/*获取总记录条数*/
+	@RequestMapping("/query4")
+	@ResponseBody   //告诉spirnmvc 返回的是数据，不是视图
+	public String query4(ProductDto product) {
+		int count = productService.query4(product);
+		JSONObject json = new JSONObject();
+		json.put("result",count);
+		return json.toJSONString();
+	}
 	
 	
 	
