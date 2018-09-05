@@ -23,7 +23,7 @@ public interface ProductService {
 	
 	public List<Product> query(Product product);
 	
-	public List<ProductDto> query2(Product product);
+	public List<ProductDto> query2(ProductDto product);
 	
 	
 	

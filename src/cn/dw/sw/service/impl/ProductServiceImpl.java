@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<ProductDto> query2(Product product) {
+	public List<ProductDto> query2(ProductDto product) {
 //		return productDao.query(product);
 		return productMapper.query2(product);
 	}

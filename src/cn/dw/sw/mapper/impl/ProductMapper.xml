@@ -125,7 +125,7 @@
 		</where>
 	
 	</select>
-	<select id="query2" parameterType="cn.dw.sw.model.Product" resultType="cn.dw.sw.model.dto.ProductDto">
+	<select id="query2" parameterType="cn.dw.sw.model.dto.ProductDto" resultType="cn.dw.sw.model.dto.ProductDto">
 		<!-- select * from product where name = ? -->
 		
 		select p.*,t.name as statusName from product p ,status t
@@ -154,7 +154,10 @@
 				and p.user_people = #{userPeople}
 			</if>
 		</where>
-	
+		<if test="startPage !=null and rowCount !=null">
+			limit #{startPage} , #{rowCount}
+		</if>
+		
 	</select>
 	
 	

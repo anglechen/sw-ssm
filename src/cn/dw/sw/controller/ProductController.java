@@ -72,7 +72,7 @@ public class ProductController {
 	/*使用jackson的方式序列化数据 结合</mvc:annotation-driven>配置里面的jackson配置使用*/
 	@RequestMapping("/query2")
 	@ResponseBody   //告诉spirnmvc 返回的是数据，不是视图
-	public List query2(Product product) {
+	public List query2(ProductDto product) {
 		List results = productService.query2(product);
 		return results;
 	}
