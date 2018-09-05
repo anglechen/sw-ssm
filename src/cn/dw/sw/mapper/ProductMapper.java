@@ -26,6 +26,8 @@ public interface ProductMapper {
 	
 	public List<ProductDto> query2(ProductDto product);
 	
+	public List<ProductDto> query3(ProductDto product);
+	
 	
 
 }

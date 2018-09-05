@@ -76,6 +76,12 @@ public class ProductController {
 		List results = productService.query2(product);
 		return results;
 	}
+	@RequestMapping("/query3")
+	@ResponseBody   //告诉spirnmvc 返回的是数据，不是视图
+	public List query3(ProductDto product) {
+		List results = productService.query3(product);
+		return results;
+	}
 	
 	
 	

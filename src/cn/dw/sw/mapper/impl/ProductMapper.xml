@@ -162,6 +162,51 @@
 	</select>
 	
 	
+	<!-- 用来解决实体类属性与数据库表字段不一致的问题  配置select中的resultMap使用-->
+	<resultMap type="cn.dw.sw.model.dto.ProductDto" id="resultMap">
+		<result column="produce_date" property="produceDate"/>
+		<result column="user_people" property="userPeople"/>
+	
+	
+	</resultMap>
+	
+	<select id="query3" parameterType="cn.dw.sw.model.dto.ProductDto" resultMap="resultMap">
+		<!-- select * from product where name = ? -->
+		
+		select p.*,t.name as statusName from product p ,status t
+		<where>
+			 p.status = t.type
+		
+			<if test="name != null and name !=''">
+				and p.name = #{name}
+			</if>
+			<if test="type != null and type !=''">
+				and p.type = #{type}
+			</if>
+			<if test="seria != null and seria !=''">
+				and p.seria = #{seria}
+			</if>
+			<if test="produceDate != null">
+				and p.produce_date = #{produceDate}
+			</if>
+			<if test="status != null">
+				and p.status = #{status}
+			</if>
+			<if test="prices != null">
+				and p.prices = #{prices}
+			</if>
+			<if test="userPeople != null and userPeople !='' ">
+				and p.user_people = #{userPeople}
+			</if>
+		</where>
+		<!-- 分页动态配置 -->
+		<if test="startPage !=null and rowCount !=null">
+			limit #{startPage} , #{rowCount}
+		</if>
+		
+	</select>
+	
+	
 	
 
 </mapper>
