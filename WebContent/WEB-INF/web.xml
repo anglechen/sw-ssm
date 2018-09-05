@@ -32,6 +32,11 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!-- 放出静态资源不需要springmvc拦截处理 -->
+  <servlet-mapping>
+  	<servlet-name>default</servlet-name>
+  	<url-pattern>/static/*</url-pattern>
+  </servlet-mapping>
   
   
   
